@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <h1 id="logo">dev.finance%</h1>
+        <img src="assets/logo.svg" alt="logo Dev finance">
     </header>
     <!--Cabeçalho-->
 
@@ -22,28 +22,37 @@
 
         <section id="balance">
             <!-- id é igual o RG-->
-            <h2>Balanço</h2>
+            <h2 class="sr-only" > Balanço</h2>
 
             <div class="card"> <!--classificando a div-->
                 <!--tag generica-->
-                <h3>Entradas </h3>
+                <h3>
+                    <span>Entradas</span> 
+                    <img src="assets/income.svg" alt="Image de entradas">
+                </h3>
                 <p>R$ 5.000,00</p>
             </div>
 
             <div class="card">
-                <h3>Saídas</h3>
+                <h3>
+                    <span>Saídas</span>
+                    <img src="./assets/expense.svg" alt="Image de saídas">
+                </h3>
                 <p>R$ 2.000,00</p>
             </div>
 
             <div class="card total">
-                <h3>Total</h3>
+                <h3>
+                    <span>Total</span>
+                    <img src="assets/total.svg " alt="Image de total">
+                </h3>
                 <p>R$3.000,00</p>
             </div>
 
         </section>
 
         <section id="transaction">
-            <h2>Transações</h2>
+            <h2 class="sr-only" >Transações</h2>
             <table id="data-table">
                 <!--Tabela-->
                 <thead>
