@@ -54,7 +54,9 @@
         <section id="transaction">
             <h2 class="sr-only" >Transações</h2>
 
-            <a href="#" class="button new"> + nova transação</a>
+            <a href="#" 
+            onclick="Modal.open()"
+            class="button new"> + nova transação</a>
 
             <table id="data-table">
                 <!--Tabela-->
@@ -82,7 +84,7 @@
                     <tr>
                         <td class="descriptions">Criação de website</td>
                         <td class="income">- R$500,00</td>
-                        <td class="date">23/01/21</td>
+                        <td class="date">23/01/2021</td>
                         <td>
                             <img src="./assets/minus.svg" alt="">
                         </td>
@@ -90,7 +92,7 @@
                     <tr>
                         <td class="descriptions" >Internet</td>
                         <td class="expense">- R$200,00</td>
-                        <td class="date">23/06/21</td>
+                        <td class="date">23/06/2021</td>
                         <td>
                             <img src="./assets/minus.svg" alt="">
                         </td>
@@ -146,7 +148,10 @@
 
 
                 <div class="input-group actions" >
-                    <a href="#" class="button cancel" > Cancelar</a>
+                    <a
+                    onclick="Modal.close()" 
+                    href="#"  
+                    class="button cancel"> Cancelar</a>
                     <button>Salvar</button>
                 </div>
 
@@ -159,7 +164,25 @@
     </footer>
 
     <script>
-        
+        const Modal = {
+            open() {
+                //Abrir modal
+                //Adicionar a calss active ao modal
+                document
+                    .querySelector('.modal-overlay') //documento pesquise dentro de você pelo seletor que eu vou colocar ali dentro
+                    .classList
+                    .add('active')
+            },
+            close(){
+                //fechar o modal
+                //remover a class active do modal
+                document
+                    .querySelector('.modal-overlay')
+                    .classList
+                    .remove('active')
+
+            }
+        }
     </script>
 
 </body>
