@@ -79,13 +79,13 @@ const DOM = {
     innerHTMLTransaction(transaction) {
         const CSSclass= transaction.amount > 0 ? "income" : "expense"
 
-        const amount = Utils.formatCurrency(transactions.amount)
+        const amount = Utils.formatCurrency(transaction.amount)
 
         const html = `
         <tr>
             <!--linha-->
             <td class="descriptions" >${transaction.description}</td>
-            <td class="${CSSclass}">${transaction.amount}</td>
+            <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td>
                 <img src="assets/minus.svg" alt="Remover transação">
@@ -106,7 +106,12 @@ const Utils = {
 
         value = Number (value) / 100
 
-        console.log(value)
+        value = value.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        })
+
+        return signal + value 
     }
 }
 
