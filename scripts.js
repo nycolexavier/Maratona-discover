@@ -50,23 +50,37 @@ const transactions = [
 // depois eu preciso somar as saías e remover as entradas o valor das saídas
 // assim, eu terei o total
 
-
+// responsável pelo cálculo matemático
 const Transaction = {
+    all: transactions,
+    
+    
+    add(transaction){
+        Transaction.all.push(transaction)
+
+        App.reload()
+    },
+
+
     incomes() {
         let income = 0;
         // pegar todas as transações
         // para cada transação
-        transactions.forEach(transaction => {mshsjhdsshj retornar a variáveis
+        transactions.all.forEach(transaction => { 
+            // se ela for maior que zero 
+            // retornar a variáveis
+            if (transaction.amount > 0 ) {
                 income += transaction.amount;
-            }
+            }  
         })
         return income;
     },
+
     expenses() {
         let expense = 0;
         //pegar todas as transações
         // para cada transação
-        transactions.forEach(transaction => {
+        transactions.all.forEach(transaction => {
             // se for menor que zero
             if (transaction.amount < 0) {
                 //subtrair a uma variável e retornar a variável
@@ -75,8 +89,9 @@ const Transaction = {
         })
         return expense;
     },
+
     total() {
-        return "Dicover"
+        return Transaction.incomes() + Transaction.expenses();
     }
 
 }
@@ -117,13 +132,16 @@ const DOM = {
     updateBalance() {
         document
             .getElementById('incomeDisplay')
-            .innerHTML = Transaction.incomes()
+            .innerHTML = Utils.formatCurrency(Transaction.incomes())
         document
             .getElementById('expenseDisplay')
-            .innerHTML = Transaction.expenses()
+            .innerHTML = Utils.formatCurrency(Transaction.expenses())
         document
             .getElementById('totalDisplay')
-            .innerHTML = Transaction.total()
+            .innerHTML = Utils.formatCurrency(Transaction.total())
+    }, 
+    clearTransacitons() {
+        DOM.transactionsContainer.innerHTML = ""
     }
 }
 
@@ -144,9 +162,28 @@ const Utils = {
     }
 }
 
+const App = {
+    init() {
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        } )
+        
+        DOM.updateBalance()
+    },
 
-transactions.forEach(function(transaction) {
-    DOM.addTransaction(transaction)
-} )
+    reload() {
+        DOM.clearTransacitons()
+        App.init()
+    },
 
-DOM.updateBalance()
+}
+
+App.init()
+
+
+Transaction.add({
+    id: 39,
+    description: 'alo',
+    amount: 200,
+    date: '23/05/2021'
+})
