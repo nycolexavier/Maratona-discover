@@ -158,7 +158,50 @@ const Utils = {
     }
 }
 
-const Form = {}
+const Form = {
+    description: document.querySelector('input#description'),
+    amount: document.querySelector('input#amount'),
+    date: document.querySelector('input#date'),
+
+    getValues() {
+        return {
+            description: Form.description.value,
+            amount: Form.amount.value,
+            date: Form.date.value 
+        }
+    },
+    validateFields() {
+        const {description, amount, date} = Form.getValues()
+
+        if (description.trin() === "" ||
+            amount.trin() === "" ||
+            date.trin() === "") {
+                throw new Error("Por favor, preeencha tdos os campos")
+        }
+    },
+
+    submit(event){
+        event.preventDefault()
+
+        try {
+            Form.validateFields()
+
+            // formatar os dados para salvar 
+            //Form.formatData()
+            // salvar
+            // apagar o formulário do formulário
+            // modal feche
+            // atualizar a aplicação
+
+        } catch (error) {
+            alert(error.mesage)
+        }
+
+        
+    }
+}
+
+
 
 const App = {
     init() {
