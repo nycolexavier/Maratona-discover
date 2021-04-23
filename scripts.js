@@ -56,10 +56,7 @@ const Transaction = {
         let income = 0;
         // pegar todas as transações
         // para cada transação
-        transactions.forEach(transaction => {
-            // se for maior que zero
-            if(transaction.amount > 0 ) {
-                // somar a uma variável e retornar a variáveis
+        transactions.forEach(transaction => {mshsjhdsshj retornar a variáveis
                 income += transaction.amount;
             }
         })
