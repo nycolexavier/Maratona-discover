@@ -19,44 +19,40 @@ const Modal = {
     }
 }
 
-const transactions = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -50001,
-        date: '23/01/2021',
-    },
-    {
-        id: 2,
-        description: 'Website',
-        amount: 500000,
-        date: '23/01/2021'
-    },
-    {
-        id: 3,
-        description: 'Internet',
-        amount: -20012,
-        date: '23/01/2021'
-    },
-    {    id: 4,
-        description: 'App',
-        amount: 20000,
-        date: '23/01/2021',
-    }
-]
-
-
-// Eu preciso somar as entradas
-// depois eu preciso somar as saías e remover as entradas o valor das saídas
-// assim, eu terei o total
-
 // responsável pelo cálculo matemático
 const Transaction = {
-    all: transactions,
+    all:   [
+        {
+            description: 'Luz',
+            amount: -50001,
+            date: '23/01/2021',
+        },
+        {
+            description: 'Website',
+            amount: 500000,
+            date: '23/01/2021'
+        },
+        {
+            description: 'Internet',
+            amount: -20012,
+            date: '23/01/2021'
+        },
+        {   
+            description: 'App',
+            amount: 20000,
+            date: '23/01/2021',
+        }
+    ],
     
     
     add(transaction){
         Transaction.all.push(transaction)
+
+        App.reload()
+    },
+    
+    remove(index) {
+        Transaction.all.splice(index, 1)
 
         App.reload()
     },
@@ -66,7 +62,7 @@ const Transaction = {
         let income = 0;
         // pegar todas as transações
         // para cada transação
-        transactions.all.forEach(transaction => { 
+        Transaction.all.forEach(transaction => { 
             // se ela for maior que zero 
             // retornar a variáveis
             if (transaction.amount > 0 ) {
@@ -80,7 +76,7 @@ const Transaction = {
         let expense = 0;
         //pegar todas as transações
         // para cada transação
-        transactions.all.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             // se for menor que zero
             if (transaction.amount < 0) {
                 //subtrair a uma variável e retornar a variável
@@ -162,6 +158,8 @@ const Utils = {
     }
 }
 
+const Form = {}
+
 const App = {
     init() {
         Transaction.all.forEach(transaction => {
@@ -179,11 +177,3 @@ const App = {
 }
 
 App.init()
-
-
-Transaction.add({
-    id: 39,
-    description: 'alo',
-    amount: 200,
-    date: '23/05/2021'
-})
