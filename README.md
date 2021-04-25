@@ -1,4 +1,4 @@
-# Maratona Discover
+# Maratona Discover 🚀
 
  Projeto feito durante a maratona
  
