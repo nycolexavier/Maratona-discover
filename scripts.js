@@ -142,6 +142,9 @@ const DOM = {
 }
 
 const Utils = {
+    formatAmount(value) {
+        console.log(value)
+    },
     formatCurrency(value) {
         const signal = Number(value) < 0 ? "-" : ""
 
@@ -176,18 +179,26 @@ const Form = {
         if (description.trin() === "" ||
             amount.trin() === "" ||
             date.trin() === "") {
-                throw new Error("Por favor, preeencha tdos os campos")
+                 throw new Error("Por favor, preeencha tdos os campos")
         }
+    },
+
+    formatValues() {
+
+        let {description, amount, date} = Form.getValues()
+
+        amount = Utils.formatAmount(amount)
+
     },
 
     submit(event){
         event.preventDefault()
 
         try {
-            Form.validateFields()
+            //Form.validateFields()
 
             // formatar os dados para salvar 
-            //Form.formatData()
+            Form.formatValues()
             // salvar
             // apagar o formulário do formulário
             // modal feche
