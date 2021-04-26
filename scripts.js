@@ -21,30 +21,8 @@ const Modal = {
 
 // responsável pelo cálculo matemático
 const Transaction = {
-    all:   [
-        {
-            description: 'Luz',
-            amount: -50001,
-            date: '23/01/2021',
-        },
-        {
-            description: 'Website',
-            amount: 500000,
-            date: '23/01/2021'
-        },
-        {
-            description: 'Internet',
-            amount: -20012,
-            date: '23/01/2021'
-        },
-        {   
-            description: 'App',
-            amount: 20000,
-            date: '23/01/2021',
-        }
-    ],
-    
-    
+    all: transactions, 
+        
     add(transaction){
         Transaction.all.push(transaction)
 
