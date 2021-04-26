@@ -140,8 +140,15 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        console.log(value)
+        value = Number(value) * 100
+        
+        return value
     },
+
+    formatDate(date) {
+        console.log(date)
+    },
+
     formatCurrency(value) {
         const signal = Number(value) < 0 ? "-" : ""
 
@@ -185,6 +192,8 @@ const Form = {
         let {description, amount, date} = Form.getValues()
 
         amount = Utils.formatAmount(amount)
+
+        date = Utils.formatDate(date)
 
     },
 
