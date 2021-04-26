@@ -71,7 +71,6 @@ const Transaction = {
 }
 
 // Substituir os dados do HTML com os dados do JS
-
 const DOM = {
     transactionsContainer: document.querySelector('#data-table tbody'), //busquei no html
 
