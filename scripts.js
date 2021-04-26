@@ -93,17 +93,17 @@ const DOM = {
 
     }, 
     innerHTMLTransaction(transaction, index) {
-        const CSSclass= transaction.amount > 0 ? "income" : "expense"
+        const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
         const amount = Utils.formatCurrency(transaction.amount)
 
         const html = `
-            <td class="description">${transaction.description}</td>
-            <td class="${CSSclass}">${amount}</td>
-            <td class="date">${transaction.date}</td>
-            <td>
-                <img onclieck="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
-            </td>
+        <td class="description">${transaction.description}</td>
+        <td class="${CSSclass}">${amount}</td>
+        <td class="date">${transaction.date}</td>
+        <td>
+            <img onclieck="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
+        </td>
         `
 
         return html
@@ -128,9 +128,8 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        value = Number(value) * 100
-        
-        return value
+        value = value * 100
+        return Math.round(value)
     },
 
     formatDate(date) {
@@ -173,7 +172,7 @@ const Form = {
         if (description.trim() === "" ||
             amount.trim() === "" ||
             date.trim() === "") {
-                throw new Error("Por favor, preeencha tdos os campos")
+                throw new Error("Por favor, preencha tdos os campos")
         }
     },
 
@@ -223,9 +222,7 @@ const Form = {
 
 const App = {
     init() {
-        Transaction.all.forEach(function(transaction, index) {
-            DOM.addTransaction(transaction, index)
-        } )
+        Transaction.all.forEach(DOM.addTransaction)
         
         DOM.updateBalance()
 
