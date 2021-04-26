@@ -203,6 +203,16 @@ const Form = {
         }
     },
 
+    saveTransaction(transaction) {
+        Transaction.add(transaction)
+    },
+
+    clearFields() {
+        Form.description.value = ""
+        Form.amount.value = ""
+        Form.date.value = ""
+    },
+
     submit(event){
         event.preventDefault()
 
@@ -211,8 +221,9 @@ const Form = {
             // formatar os dados para salvar 
             const transaction = Form.formatValues()
             // salvar
-            Form.saveTransaction()
+            Form.saveTransaction(transaction)
             // apagar os dados do formulário
+            Form.claerFields()
             // modal feche
             // atualizar a aplicação
 
