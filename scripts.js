@@ -29,8 +29,6 @@ const Storage = {
     }
 }
 
-
-
 // responsável pelo cálculo matemático
 const Transaction = {
     all: Storage.get(),
@@ -88,7 +86,7 @@ const DOM = {
 
     addTransaction(transaction, index) {
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
         tr.dataset.index = index
 
         DOM.transactionsContainer.appendChild(tr)
@@ -99,17 +97,13 @@ const DOM = {
 
         const amount = Utils.formatCurrency(transaction.amount)
 
-        const html = 
-        `
-        <tr>
-            <!--linha-->
-            <td class="descriptions" >${transaction.description}</td>
+        const html = `
+            <td class="description">${transaction.description}</td>
             <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td>
                 <img onclieck="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
             </td>
-        </tr>
         `
 
         return html
@@ -172,12 +166,13 @@ const Form = {
             date: Form.date.value 
         }
     },
+
     validateFields() {
         const {description, amount, date} = Form.getValues()
 
-        if (description.trin() === "" ||
-            amount.trin() === "" ||
-            date.trin() === "") {
+        if (description.trim() === "" ||
+            amount.trim() === "" ||
+            date.trim() === "") {
                 throw new Error("Por favor, preeencha tdos os campos")
         }
     },
@@ -214,7 +209,7 @@ const Form = {
             // salvar
             Transaction.add(transaction)
             // apagar os dados do formulário
-            Form.claerFields()
+            Form.clearFields()
             // modal feche
             Modal.close()
             // atualizar a aplicação
@@ -225,8 +220,6 @@ const Form = {
         
     }
 }
-
-
 
 const App = {
     init() {
@@ -240,7 +233,7 @@ const App = {
     },
 
     reload() {
-        DOM.clearTransacitons()
+        DOM.clearTransactions()
         App.init()
     },
 
