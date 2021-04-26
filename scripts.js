@@ -28,7 +28,7 @@ const Transaction = {
     },
     {
         description: 'Website',
-        amount: '50000',
+        amount: 50000,
         date: '23/01/2021',
     },
     {
@@ -40,7 +40,7 @@ const Transaction = {
         description: 'App',
         amount: 20000,
         date: '23/01/2021',
-    },
+    }
     ], 
         
     add(transaction){
@@ -233,6 +233,17 @@ const Form = {
         
     }
 }
+
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
+    },
+
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
+    }
+}
+
 
 
 const App = {
