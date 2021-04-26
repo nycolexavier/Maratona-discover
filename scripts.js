@@ -176,7 +176,7 @@ const Form = {
         if (description.trin() === "" ||
             amount.trin() === "" ||
             date.trin() === "") {
-                 throw new Error("Por favor, preeencha tdos os campos")
+                throw new Error("Por favor, preeencha tdos os campos")
         }
     },
 
@@ -193,16 +193,15 @@ const Form = {
 
         try {
             //Form.validateFields()
-
             // formatar os dados para salvar 
             Form.formatValues()
             // salvar
-            // apagar o formulário do formulário
+            // apagar os dados do formulário
             // modal feche
             // atualizar a aplicação
 
         } catch (error) {
-            alert(error.mesage)
+            alert(error.message)
         }
 
         
