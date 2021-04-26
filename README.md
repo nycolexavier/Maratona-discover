@@ -1,3 +1,6 @@
-# Maratona-discover
+# Maratona Discover 🚀
+
  Projeto feito durante a maratona
- (repositório em desenvolvimento)
+ 
+ 
+ (developing repository)
