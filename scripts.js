@@ -146,7 +146,8 @@ const Utils = {
     },
 
     formatDate(date) {
-        console.log(date)
+        const splittedDate = date.split("-")
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
     },
 
     formatCurrency(value) {
@@ -195,16 +196,22 @@ const Form = {
 
         date = Utils.formatDate(date)
 
+        return {
+            description,
+            amount,
+            date
+        }
     },
 
     submit(event){
         event.preventDefault()
 
         try {
-            //Form.validateFields()
+            Form.validateFields()
             // formatar os dados para salvar 
-            Form.formatValues()
+            const transaction = Form.formatValues()
             // salvar
+            Form.saveTransaction()
             // apagar os dados do formulário
             // modal feche
             // atualizar a aplicação
