@@ -203,9 +203,6 @@ const Form = {
         }
     },
 
-    saveTransaction(transaction) {
-        Transaction.add(transaction)
-    },
 
     clearFields() {
         Form.description.value = ""
@@ -221,12 +218,12 @@ const Form = {
             // formatar os dados para salvar 
             const transaction = Form.formatValues()
             // salvar
-            Form.saveTransaction(transaction)
+            Transaction.add(transaction)
             // apagar os dados do formulário
             Form.claerFields()
             // modal feche
+            Modal.close()
             // atualizar a aplicação
-
         } catch (error) {
             alert(error.message)
         }
