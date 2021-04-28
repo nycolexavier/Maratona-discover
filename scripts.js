@@ -102,7 +102,7 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <img onclieck="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
+            <img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
         </td>
         `
 
@@ -121,7 +121,7 @@ const DOM = {
             .getElementById('totalDisplay')
             .innerHTML = Utils.formatCurrency(Transaction.total())
     }, 
-    clearTransacitons() {
+    clearTransactions() {
         DOM.transactionsContainer.innerHTML = ""
     }
 }
